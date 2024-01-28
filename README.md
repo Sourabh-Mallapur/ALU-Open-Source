@@ -1,4 +1,4 @@
-# ALU-Open_Source
+# ALU-Open-Source
 This Repo contains details of designing and implementing a 8 bit ALU module using Open source ASIC/IC Design tools
 
 ## Overview
