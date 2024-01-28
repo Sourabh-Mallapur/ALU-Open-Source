@@ -1,0 +1,1 @@
+This Repo contains details of designing and implementing a 32 bit (Single Precision) Floating point Adder module using Open source ASIC/IC Design tools
