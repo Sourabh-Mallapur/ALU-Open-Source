@@ -27,7 +27,16 @@ ALU Arithmetic and Logic Operations
 | 1110    | ALU_Out = 1 if A > B else 0;               |
 | 1111    | ALU_Out = 1 if A = B else 0;               |
 
+## Steps For Design
+- RTL level Code
+- Gate level Schmatic
+- Netlist
+- Floor/Power Planning
+- Placement
+- Clock Tree Synthesis
 
 ## Tools Used
-- [Tool1](link1): Description of the tool
+- [Yosys](https://github.com/YosysHQ/yosys): Yosys is a framework for RTL synthesis tools. It currently has extensive Verilog-2005 support
 - [Tool2](link2): Description of the tool
+
+## Synthesis
