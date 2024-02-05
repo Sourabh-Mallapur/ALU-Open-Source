@@ -10,16 +10,19 @@ module tb_alu;
  wire CarryOut;
  // Verilog code for ALU
  integer i;
- alu test_unit(
-            A,B,  // ALU 8-bit Inputs                 
-            ALU_Sel,// ALU Selection
-            ALU_Out, // ALU 8-bit Output
-            CarryOut // Carry Out Flag
+ alu dut( .A(A),.B(B),  // ALU 8-bit Inputs                 
+          .ALU_Sel(ALU_Sel),// ALU Selection
+          .ALU_Out(ALU_Out), // ALU 8-bit Output
+          .CarryOut(CarryOut) // Carry Out Flag
      );
     initial begin
-    // hold reset state for 100 ns.
+    
+      $dumpfile("dump.vcd");
+      $dumpvars(0, tb_alu);
+      
+      // hold reset state for 100 ns.
       A = 8'h0A;
-      B = 4'h02;
+      B = 8'h02;
       ALU_Sel = 4'h0;
       
       for (i=0;i<=15;i=i+1)
