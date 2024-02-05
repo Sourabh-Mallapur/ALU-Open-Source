@@ -40,8 +40,9 @@ ALU Arithmetic and Logic Operations
 - [Tool2](link2): Description of the tool
 
 ## RTL level Code
-```
 
+Source code for 8 bit ALU Provided by [fpga4studemy]
+```
 module alu(
            input [7:0] A,B,  // ALU 8-bit Inputs                 
            input [3:0] ALU_Sel,// ALU Selection
