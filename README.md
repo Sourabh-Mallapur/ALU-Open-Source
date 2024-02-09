@@ -38,7 +38,7 @@ ALU Arithmetic and Logic Operations
 ## RTL level Code
 
 Source code for 8 bit ALU Provided by [fpga4student]
-```
+```Verilog
 module alu(
            input [7:0] A,B,  // ALU 8-bit Inputs                 
            input [3:0] ALU_Sel,// ALU Selection
@@ -57,35 +57,25 @@ module alu(
            ALU_Result = A + B ; 
         4'b0001: // Subtraction
            ALU_Result = A - B ;
-        4'b0010: // Multiplication
-           ALU_Result = A * B;
-        4'b0011: // Division
-           ALU_Result = A/B;
-        4'b0100: // Logical shift left
+        4'b0010: // Logical shift left
            ALU_Result = A<<1;
-         4'b0101: // Logical shift right
+        4'b0011: // Logical shift right
            ALU_Result = A>>1;
-         4'b0110: // Rotate left
+        4'b0100: // Rotate left
            ALU_Result = {A[6:0],A[7]};
-         4'b0111: // Rotate right
+        4'b0101: // Rotate right
            ALU_Result = {A[0],A[7:1]};
-          4'b1000: //  Logical and 
+        4'b0110: //  Logical and 
            ALU_Result = A & B;
-          4'b1001: //  Logical or
+        4'b0111: //  Logical or
            ALU_Result = A | B;
-          4'b1010: //  Logical xor 
+        4'b1000: //  Logical xor 
            ALU_Result = A ^ B;
-          4'b1011: //  Logical nor
-           ALU_Result = ~(A | B);
-          4'b1100: // Logical nand 
-           ALU_Result = ~(A & B);
-          4'b1101: // Logical xnor
-           ALU_Result = ~(A ^ B);
-          4'b1110: // Greater comparison
+        4'b1001: // Greater comparison
            ALU_Result = (A>B)?8'd1:8'd0 ;
-          4'b1111: // Equal comparison   
+        4'b1010: // Equal comparison   
             ALU_Result = (A==B)?8'd1:8'd0 ;
-          default: ALU_Result = A + B ; 
+        default: ALU_Result = A + B ; 
         endcase
     end
 
@@ -95,7 +85,7 @@ endmodule
 ## Testbench and Simulation
 testbench code for ALU provided by [fpga4student]
 
-```
+```Verilog
 `timescale 1ns / 1ps  
 
 module tb_alu;
@@ -123,10 +113,10 @@ module tb_alu;
       B = 8'h02;
       ALU_Sel = 4'h0;
       
-      for (i=0;i<=15;i=i+1)
+      for (i=0;i<=11;i=i+1)
       begin
-       ALU_Sel = ALU_Sel + 8'h01;
        #10;
+       ALU_Sel = ALU_Sel + 8'h01;
       end;
       
       A = 8'hF6;
