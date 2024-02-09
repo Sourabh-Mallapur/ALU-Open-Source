@@ -25,10 +25,10 @@ module tb_alu;
       B = 8'h02;
       ALU_Sel = 4'h0;
       
-      for (i=0;i<=15;i=i+1)
+      for (i=0;i<=11;i=i+1)
       begin
-       ALU_Sel = ALU_Sel + 8'h01;
        #10;
+       ALU_Sel = ALU_Sel + 8'h01;
       end;
       
       A = 8'hF6;

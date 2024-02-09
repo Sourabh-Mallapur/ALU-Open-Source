@@ -16,23 +16,25 @@ module alu(
            ALU_Result = A + B ; 
         4'b0001: // Subtraction
            ALU_Result = A - B ;
-        4'b0010: // Multiplication
-           ALU_Result = A * B;
-        4'b0011: // Division
-           ALU_Result = A/B;
-        4'b0100: // Logical shift left
+        4'b0010: // Logical shift left
            ALU_Result = A<<1;
-        4'b0101: // Logical shift right
+        4'b0011: // Logical shift right
            ALU_Result = A>>1;
-        4'b0110: // Rotate left
+        4'b0100: // Rotate left
            ALU_Result = {A[6:0],A[7]};
-        4'b0111: // Rotate right
+        4'b0101: // Rotate right
            ALU_Result = {A[0],A[7:1]};
-        4'b1000: // Greater comparison
+        4'b0110: //  Logical and 
+           ALU_Result = A & B;
+        4'b0111: //  Logical or
+           ALU_Result = A | B;
+        4'b1000: //  Logical xor 
+           ALU_Result = A ^ B;
+        4'b1001: // Greater comparison
            ALU_Result = (A>B)?8'd1:8'd0 ;
-        4'b1001: // Equal comparison   
-           ALU_Result = (A==B)?8'd1:8'd0 ;
-          default: ALU_Result = A + B ; 
+        4'b1010: // Equal comparison   
+            ALU_Result = (A==B)?8'd1:8'd0 ;
+        default: ALU_Result = A + B ; 
         endcase
     end
 
