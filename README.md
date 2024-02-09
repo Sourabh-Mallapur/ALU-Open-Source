@@ -36,8 +36,9 @@ ALU Arithmetic and Logic Operations
 - Clock Tree Synthesis
 
 ## Tools Used
-- [Yosys](https://github.com/YosysHQ/yosys): Yosys is a framework for RTL synthesis tools. It currently has extensive Verilog-2005 support
-- [Tool2](link2): Description of the tool
+- [Icarus Verilog](https://bleyer.org/icarus/): A free compiler implementation for the IEEE-1364 Verilog hardware description language
+- [Yosys](https://github.com/YosysHQ/yosys): A framework for RTL synthesis tools. It currently has extensive Verilog-2005 support
+- [GTKWave](https://gtkwave.sourceforge.net/): GTKWave is a fully featured GTK+ based wave viewer
 
 ## RTL level Code
 
@@ -139,8 +140,11 @@ module tb_alu;
     end
 endmodule
 ```
-## Simualtion
 
+## Simualtion
 Simulation of the HDL Code was done using Icarus Verilog and Waveforms was obtained using GTKwave
-![Sim]()
+
+![Sim](https://github.com/Sourabh-Mallapur/ALU-Open-Source/blob/main/sim/Simuation.PNG)
+
 ## Synthesis
+S
