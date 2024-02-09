@@ -139,4 +139,8 @@ module tb_alu;
     end
 endmodule
 ```
+## Simualtion
+
+Simulation of the HDL Code was done using Icarus Verilog and Waveforms was obtained using GTKwave
+![Sim]()
 ## Synthesis
