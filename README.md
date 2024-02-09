@@ -3,6 +3,7 @@ This Repo contains details of designing and implementing a 8 bit ALU module usin
 
 ## Overview
 The primary goal of this project is to create a functional 8-bit ALU using open-source tools for ASIC/IC design. The ALU will perform arithmetic and logical operations on 8-bit binary inputs.
+Source code for 8 bit ALU + tb Provided by [fpga4student](https://www.fpga4student.com/2017/06/Verilog-code-for-ALU.html)
 
 ## Operations
 
@@ -37,7 +38,6 @@ ALU Arithmetic and Logic Operations
 
 ## RTL level Code
 
-Source code for 8 bit ALU Provided by [fpga4student]
 ```Verilog
 module alu(
            input [7:0] A,B,  // ALU 8-bit Inputs                 
@@ -83,7 +83,6 @@ endmodule
 
 ```
 ## Testbench and Simulation
-testbench code for ALU provided by [fpga4student]
 
 ```Verilog
 `timescale 1ns / 1ps  
