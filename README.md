@@ -96,7 +96,7 @@ endmodule
 ## Simualtion
 Simulation of the HDL Code was done using Icarus Verilog and Waveforms was obtained using GTKwave
 
-![Sim](https://github.com/Sourabh-Mallapur/ALU-Open-Source/blob/main/sim/Simuation.PNG)
+![Sim](https://github.com/Sourabh-Mallapur/ALU-Open-Source/blob/main/sim/sim.PNG)
 
 ## Synthesis
 S
