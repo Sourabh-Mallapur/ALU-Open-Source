@@ -9,19 +9,12 @@ Source code for 8 bit ALU + tb Provided by [fpga4student](https://www.fpga4stude
 
 
 ALU Arithmetic and Logic Operations
-| ALU_Sel | ALU Operation                               |
-|---------|--------------------------------------------|
-| 0000    | ALU_Out = A + B;                            |
-| 0001    | ALU_Out = A - B;                            |
-| 0010    | ALU_Out = A << 1;                           |
-| 0011    | ALU_Out = A >> 1;                           |
-| 0100    | ALU_Out = A rotated left by 1;             |
-| 0101    | ALU_Out = A rotated right by 1;            |
-| 0110    | ALU_Out = A and B;                         |
-| 0111    | ALU_Out = A or B;                          |
-| 1000    | ALU_Out = A xor B;                         |
-| 1001   | ALU_Out = 1 if A > B else 0;               |
-| 1010    | ALU_Out = 1 if A = B else 0;               |
+| ALU_Sel | ALU Operation                             |
+|--------|--------------------------------------------|
+| 00    | ALU_Out = A + B;                            |
+| 01    | ALU_Out = A - B;                            |
+| 10    | ALU_Out = A << 1;                           |
+| 11    | ALU_Out = A >> 1;                           |
 
 ## Steps For Design
 - RTL level Code
@@ -40,42 +33,23 @@ ALU Arithmetic and Logic Operations
 
 ```Verilog
 module alu(
-           input [7:0] A,B,  // ALU 8-bit Inputs                 
-           input [3:0] ALU_Sel,// ALU Selection
-           output [7:0] ALU_Out, // ALU 8-bit Output
-           output CarryOut // Carry Out Flag
+           input [3:0] A,B,  // ALU 8-bit Inputs
+           input [1:0] ALU_Sel,// ALU Selection
+           output [3:0] ALU_Out // ALU 8-bit Output
     );
-    reg [7:0] ALU_Result;
-    wire [8:0] tmp;
+    reg [3:0] ALU_Result;
     assign ALU_Out = ALU_Result; // ALU out
-    assign tmp = {1'b0,A} + {1'b0,B};
-    assign CarryOut = tmp[8]; // Carryout flag
     always @(*)
     begin
         case(ALU_Sel)
-        4'b0000: // Addition
-           ALU_Result = A + B ; 
-        4'b0001: // Subtraction
+        2'b00: // Addition
+           ALU_Result = A + B ;
+        2'b01: // Subtraction
            ALU_Result = A - B ;
-        4'b0010: // Logical shift left
+        2'b10: // Logical shift left
            ALU_Result = A<<1;
-        4'b0011: // Logical shift right
+        2'b11: // Logical shift right
            ALU_Result = A>>1;
-        4'b0100: // Rotate left
-           ALU_Result = {A[6:0],A[7]};
-        4'b0101: // Rotate right
-           ALU_Result = {A[0],A[7:1]};
-        4'b0110: //  Logical and 
-           ALU_Result = A & B;
-        4'b0111: //  Logical or
-           ALU_Result = A | B;
-        4'b1000: //  Logical xor 
-           ALU_Result = A ^ B;
-        4'b1001: // Greater comparison
-           ALU_Result = (A>B)?8'd1:8'd0 ;
-        4'b1010: // Equal comparison   
-            ALU_Result = (A==B)?8'd1:8'd0 ;
-        default: ALU_Result = A + B ; 
         endcase
     end
 
@@ -89,38 +63,32 @@ endmodule
 
 module tb_alu;
 //Inputs
- reg[7:0] A,B;
- reg[3:0] ALU_Sel;
+ reg[3:0] A,B;
+ reg[1:0] ALU_Sel;
 
 //Outputs
- wire[7:0] ALU_Out;
- wire CarryOut;
+ wire[3:0] ALU_Out;
  // Verilog code for ALU
  integer i;
  alu dut( .A(A),.B(B),  // ALU 8-bit Inputs                 
           .ALU_Sel(ALU_Sel),// ALU Selection
-          .ALU_Out(ALU_Out), // ALU 8-bit Output
-          .CarryOut(CarryOut) // Carry Out Flag
-     );
+          .ALU_Out(ALU_Out) // ALU 8-bit Output
+      );
     initial begin
     
       $dumpfile("dump.vcd");
       $dumpvars(0, tb_alu);
       
       // hold reset state for 100 ns.
-      A = 8'h0A;
-      B = 8'h02;
-      ALU_Sel = 4'h0;
+      A = 4'hA;
+      B = 4'h2;
+      ALU_Sel = 2'b00;
       
-      for (i=0;i<=11;i=i+1)
+      for (i=0;i<=5;i=i+1)
       begin
        #10;
-       ALU_Sel = ALU_Sel + 8'h01;
-      end;
-      
-      A = 8'hF6;
-      B = 8'h0A;
-      
+       ALU_Sel = ALU_Sel + 2'b01;
+      end;      
     end
 endmodule
 ```
